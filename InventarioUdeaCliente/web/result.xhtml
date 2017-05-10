@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form id="verProductos">
+            
+            <p:panel header="Productos registrados">
+                
+                <p:dataTable id="tabla"
+                             value="#{productoBean.listaprod}"
+                             var="producto" paginator="true"
+                             rows="6">
+                
+                    <p:column headerText="Codigo">
+                        <h:outputText value="#{producto.codigo}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Nombre">
+                        <h:outputText value="#{producto.nombre}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Precio">
+                        <h:outputText value="#{producto.precio}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Stock">
+                        <h:outputText value="#{producto.stock}"/>
+                    </p:column>
+                    
+                    <p:column headerText="Descripcion">
+                        <h:outputText value="#{producto.descripcion}"/>
+                    </p:column>
+                </p:dataTable>
+                                                              
+            </p:panel>
+            
+        </h:form>
+        
+        <br/><br/><br/><br/>
+        
+        <h:form>
+            
+            <p:panel header="Buscar producto por codigo"
+                footer="por Sergio Marriaga">
+                        
+                <h:panelGrid columns="3">
+                    
+                    <h:outputLabel value="Codigo" for="codigo"/>
+                    <p:inputText id="codigo" value="#{productoBean.codigo}" required="true" size="50" />
+                    <p:message for="codigo" style="color:red" />
+                    
+                    <h:panelGroup/>
+                    
+                    <p:commandButton id="bt2" ajax="false" action="#{productoBean.buscarPdto()}"
+                                     value="Buscar" icon="ui-icon-search"/>
+                    
+                    <br/>
+                    
+                    <p:outputLabel id="mensaje1" value="#{productoBean.buscarPdto()}" style="color:blue" />
+                    
+                </h:panelGrid>
+                
+                
+            </p:panel>
+            
+            
+        </h:form>
+    </h:body>
+</html>
+

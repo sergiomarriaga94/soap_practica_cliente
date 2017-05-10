@@ -9,6 +9,7 @@ import com.udea.cliente.ws.Producto;
 import com.udea.cliente.ws.ProductoWS_Service;
 import java.util.List;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.xml.ws.WebServiceRef;
 
 /**
@@ -37,6 +38,7 @@ public class productoBean {
     public String guardarProducto(){
         String mensaje=ingresarProducto(nombre, precio, stock, descripcion);
         FacesMessage msg=new FacesMessage(FacesMessage.SEVERITY_INFO,mensaje , "...");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
         limpiarForm();
         return "result"; //llamado a la vista result.xhtml
     }
@@ -44,7 +46,10 @@ public class productoBean {
     public String buscarPdto(){
         
         String mensaje=buscarProducto(codigo);
+        
+        System.out.println("el producto es " + mensaje);
         FacesMessage msg=new FacesMessage(FacesMessage.SEVERITY_INFO,mensaje,"...");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
         limpiarForm();
         return "index";//llama ala vista index.xhtml
     }
