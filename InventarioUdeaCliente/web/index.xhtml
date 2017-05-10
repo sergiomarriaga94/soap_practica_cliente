@@ -1,14 +1,46 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Hello from Facelets
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+        
+        <h:form id="FormProducto">
+            <p:growl/>
+            <p:panel header="Formulario ingreso de productos"
+                     footer="Por sergio marriaga">
+                <p:panelGrid columns="3">
+                    <h:outputLabel value="Nombre" for="nombre"/>
+                    <p:inputText id="nombre" value="#{productoBean.nombre}"
+                                 required="true"/>
+                    <p:message for="nombre" style="color:red"/>
+                    
+                    <h:outputLabel value="precio" for="precio"/>
+                    <p:inputText id="precio" value="#{productoBean.precio}"
+                                 required="true"/>
+                    <p:message for="precio" style="color:red"/>
+                    
+                    <h:outputLabel value="stock" for="stock"/>
+                    <p:inputText id="stock" value="#{productoBean.stock}"
+                                 required="true"/>
+                    <p:message for="stock" style="color:red"/>
+                    
+                    <h:outputLabel value="Descripcion" for="descripcion"/>
+                    <p:inputTextarea id="descripcion" value="#{productoBean.descripcion}"
+                                 required="true"/>
+                    <p:message for="descripcion" style="color:red"/>
+                    <h:panelGroup/>
+                    <p:commandButton id="bt" ajax="false" action="#{productoBean.guardarProducto()}"
+                                     value="Guardar" icon="ui-icon-disk"/>
+                    
+                </p:panelGrid>
+            </p:panel>
+        </h:form>
+        
+        
     </h:body>
 </html>
 
